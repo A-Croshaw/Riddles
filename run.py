@@ -14,31 +14,30 @@ SHEET = GSPREAD_CLIENT.open('Riddles')
 riddles = SHEET.worksheet("riddles")
 correct = riddles.col_values(5)
 
-def new_game():
+def play():
     player_guesses = []
     riddle_number = 0
     player_score = 0
-    answer = riddles.col_values(2)
-    answer_two = riddles.col_values(3)
-    while riddle_number < 5:
-        for riddle in riddles.col_values(1):
-            A = answer[riddle_number]
-            B = answer_two[riddle_number]
-            print("*******************************")
-            print(riddle)
-            print()
-            print("A: ", A,"  ", "B: ", B)
-            print()        
-            player_guess = input("Enter (A, B): ")
-            print()
-            player_guess = player_guess.upper()
-            player_guesses.append(player_guess)
-            player_score += answer_check(correct[riddle_number], player_guess)
-            print(player_score)
-            riddle_number += 1
-            print(riddle_number)
+    option_one = riddles.col_values(2)
+    option_two = riddles.col_values(3)
+    option_three = riddles.col_values(4)
+    
+    for riddle in riddles.col_values(1):
+        options = f"A: {option_one[riddle_number]} B: {option_two[riddle_number]} C: {option_three[riddle_number]}"    
+        print("*******************************")
+        print(riddle)
+        print()
+        print(options)
+        print()        
+        player_guess = input("Enter (A, B, C): ")
+        print()
+        player_guess = player_guess.upper()
+        player_guesses.append(player_guess)
+        player_score += answer_check(correct[riddle_number], player_guess)
+        print(player_score)
+        riddle_number += 1
+        print(riddle_number)
     final_score(player_score)
-
 
 def answer_check(correct_answer, player_guess):
 
@@ -58,14 +57,40 @@ def final_score(player_score):
     final_score = int((player_score/len(correct))*100)
     print(f"You Answered: {player_score} Correct")
     print()
-    print("Your score is: "+str(final_score)+"%")
+    print("You Answered: "+str(final_score)+"% Riddles Corretly")
 
 
 def store_score():
     pass
 
 def play_again():
-    pass
+    print("*******************************")
+    print("Would you like to play again?")
+    print("(type Yes or NO!)")
+    print()
+    x = 0
+    while x == 0:
+        restart = input()
+        restart = restart.upper()
+        if restart == "YES":
+            x += 1
+            return True
+        elif restart == "NO":
+            x += 1
+            return False
+        else:
+            print("*******************************")
+            print("Incorrect Value!!")
+            print("(type Yes or NO!)")
+            print()
+            
+def new_game():
+    play()
 
+    while play_again():
+        play()
+
+    print("*******************************")    
+    print("Thank you for playing")
 
 new_game()
