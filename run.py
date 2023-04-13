@@ -45,8 +45,9 @@ def answer_check(correct_answer, player_guess):
         print("Sorry Wrong Answer!")
         return 0
 
-def score():
+def final_score():
     pass
+
 
 def store_score():
     pass
@@ -56,4 +57,3 @@ def play_again():
 
 new_game()
 
-store_score()
