@@ -18,66 +18,83 @@ correct = riddles.col_values(5)
 player = ""
 percentage = 0
 player_score = 0
+question = []
 
 def player_details():
+
     global player
+    print(f"Welcome to Riddles.")
+    print()
+    print("*******************************")
+    print()
     print("Please Type Your Name")
     player_name = input()
+    print()
     player = player_name
 
 def welcome():
-    print(f"Welcome to Riddles {player}.")
+
+    print("*******************************")
+    print()
+    print(f"Hello {player}!!")
     print()
     print("How to Play")
     print("-----------------------------------------------------")
-    print("* There are 50 riddles to be answered")
+    print("* There are 20 riddles to be answered")
     print("* Each riddle has 3 options A, B or C to choose from")
-    print("* Each riddle will give you 1 point. Can you get 50!!")
+    print("* Each riddle will give you 1 point")
     print("-----------------------------------------------------")
+    print()
     print("Good Luck")
+    print()
 
 def play():
+
     riddle_number = 1
+    global question
     global player_score
-    option_one = riddles.col_values(2)
-    option_two = riddles.col_values(3)
-    option_three = riddles.col_values(4)
-    while riddle_number <= 50:
-        for riddle in riddles.col_values(1):
-            options = f"A: {option_one[riddle_number-1]} B: {option_two[riddle_number-1]} C: {option_three[riddle_number-1]}"    
-            print("*******************************")
-            print(f"Riddle Number {riddle_number}")
-            print(riddle)
+    while riddle_number <= 20:
+        num = random.randint(1, 50)
+        question = riddles.row_values(num)
+        print("*******************************")
+        print()
+        print(f"Riddle Number {riddle_number}")
+        print()
+        print(question[0])
+        print()
+        print(f"A: {question[1]} B: {question[2]} C: {question[3]}")
+        print() 
+        d = 0
+        player_guess = ""
+        while d== 0:
+            player_guess = input("Enter (A, B, C): ")
+            player_guess = player_guess.upper()
             print()
-            print(options)
-            print() 
-            d = 0
-            player_guess = ""
-            while d== 0:
-                player_guess = input("Enter (A, B, C): ")
-                player_guess = player_guess.upper()
-                if player_guess == "A":
-                    d += 1
-                elif player_guess == "B":
-                    d += 1
-                elif player_guess == "C":
-                    d += 1
-                else:
-                    print("*******************************")
-                    print("Incorrect Value!!")
-                    print()       
+            if player_guess == "A":
+                d += 1
+            elif player_guess == "B":
+                d += 1
+            elif player_guess == "C":
+                d += 1
+            else:
+                print("*******************************")
+                print()
+                print("Incorrect Value!!")
+                print()       
             
             print()
 
-            player_score += answer_check(correct[riddle_number-1], player_guess)
+            player_score += answer_check(question[4], player_guess)
             print(f"Your Current Score Is {player_score}")
+            print()
             riddle_number += 1
         
     final_score(player_score)
-    
+    upload_score()    
 
 def answer_check(correct_answer, player_guess):
 
+    global question
     if correct_answer == player_guess:
         print("You Answered Correct!")
         print()
@@ -88,8 +105,10 @@ def answer_check(correct_answer, player_guess):
         return 0
 
 def final_score(player_score):
+
     global percentage
     print("*******************************")
+    print()
     print("Your Final Result")
     print()
     percentage = int((player_score/len(correct))*100)
@@ -99,8 +118,10 @@ def final_score(player_score):
         print(f"CONGRATULATIONS {player} YOU ARE A RIDDLE MASTER")
     
 def upload_score():
+
     data = [player, player_score, percentage]
     print("*******************************")
+    print()
     print("To Save Your Score")
     print("Type 'Yes' or 'No'")
     print()
@@ -118,15 +139,17 @@ def upload_score():
             l += 1
         else:
             print("*******************************")
+            print()
             print("Incorrect Value!!")
-            print("(Type Yes or NO!)")
+            print("Type 'Yes' or 'NO'")
             print()
 
 def play_again():
 
     print("*******************************")
+    print()
     print("Would you like to play again?")
-    print("(Type Yes or NO!)")
+    print("Type 'Yes' or 'NO'")
     print()
     x = 0
     while x == 0:
@@ -140,20 +163,20 @@ def play_again():
             return False
         else:
             print("*******************************")
+            print()
             print("Incorrect Value!!")
-            print("(Type Yes or NO!)")
+            print("Type 'Yes' or 'NO'")
             print()
 
 def new_game():
-    riddle_section()
+
     player_details()
-    
     welcome()
-    play()
-    upload_score()
+    play()    
     while play_again():
         play()
     print("*******************************")    
+    print()
     print("Thank you for playing")
 
 new_game()
