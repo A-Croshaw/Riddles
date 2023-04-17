@@ -1,4 +1,5 @@
 import gspread
+import random
 from google.oauth2.service_account import Credentials
 
 SCOPE = [
@@ -14,12 +15,15 @@ SHEET = GSPREAD_CLIENT.open('Riddles')
 riddles = SHEET.worksheet("riddles")
 
 correct = riddles.col_values(5)
-player = []
+player = ""
+percentage = 0
+player_score = 0
 
 def player_details():
+    global player
     print("Please Type Your Name")
     player_name = input()
-    player.append(player_name)
+    player = player_name
 
 def welcome():
     print(f"Welcome to Riddles {player}.")
@@ -34,7 +38,7 @@ def welcome():
 
 def play():
     riddle_number = 1
-    player_score = 0
+    global player_score
     option_one = riddles.col_values(2)
     option_two = riddles.col_values(3)
     option_three = riddles.col_values(4)
@@ -70,6 +74,7 @@ def play():
             riddle_number += 1
         
     final_score(player_score)
+    
 
 def answer_check(correct_answer, player_guess):
 
@@ -83,20 +88,45 @@ def answer_check(correct_answer, player_guess):
         return 0
 
 def final_score(player_score):
+    global percentage
     print("*******************************")
     print("Your Final Result")
     print()
-    final_score = int((player_score/len(correct))*100)
-    print(f"You Answered: {player_score} Riddles Corretly with "+str(final_score)+"% Accuracy")
+    percentage = int((player_score/len(correct))*100)
+    print(f"You Answered: {player_score} Riddles Corretly with "+str(percentage)+"% Accuracy")
     print()
     if player_score == 50:
         print(f"CONGRATULATIONS {player} YOU ARE A RIDDLE MASTER")
+    
+def upload_score():
+    data = [player, player_score, percentage]
+    print("*******************************")
+    print("To Save Your Score")
+    print("Type 'Yes' or 'No'")
+    print()
+    l = 0
+    while l == 0:
+        upload = input()
+        upload = upload.upper()
+        if upload == "YES":
+            print("Uploading Score\n")
+            score_worksheet = SHEET.worksheet("score")
+            score_worksheet.append_row(data)
+            print("Successfully added.\n")
+            l += 1
+        elif upload == "NO":
+            l += 1
+        else:
+            print("*******************************")
+            print("Incorrect Value!!")
+            print("(Type Yes or NO!)")
+            print()
 
 def play_again():
 
     print("*******************************")
     print("Would you like to play again?")
-    print("(type Yes or NO!)")
+    print("(Type Yes or NO!)")
     print()
     x = 0
     while x == 0:
@@ -111,14 +141,16 @@ def play_again():
         else:
             print("*******************************")
             print("Incorrect Value!!")
-            print("(type Yes or NO!)")
+            print("(Type Yes or NO!)")
             print()
-            
-def new_game():
 
+def new_game():
+    riddle_section()
     player_details()
+    
     welcome()
     play()
+    upload_score()
     while play_again():
         play()
     print("*******************************")    
