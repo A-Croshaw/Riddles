@@ -19,6 +19,7 @@ player = ""
 percentage = 0
 player_score = 0
 question = []
+nums = []
 
 def player_details():
 
@@ -55,35 +56,36 @@ def play():
     global player_score
     while riddle_number <= 20:
         num = random.randint(1, 50)
-        question = riddles.row_values(num)
-        print("*******************************")
-        print()
-        print(f"Riddle Number {riddle_number}")
-        print()
-        print(question[0])
-        print()
-        print(f"A: {question[1]} B: {question[2]} C: {question[3]}")
-        print() 
-        d = 0
-        player_guess = ""
-        while d== 0:
-            player_guess = input("Enter (A, B, C): ")
-            player_guess = player_guess.upper()
+        if num not in nums:
+            nums.append(num)
+            question = riddles.row_values(num)
+            print(nums)
+            print("*******************************")
             print()
-            if player_guess == "A":
-                d += 1
-            elif player_guess == "B":
-                d += 1
-            elif player_guess == "C":
-                d += 1
-            else:
-                print("*******************************")
+            print(f"Riddle Number {riddle_number}")
+            print()
+            print(question[0])
+            print()
+            print(f"A: {question[1]} B: {question[2]} C: {question[3]}")
+            print() 
+            d = 0
+            player_guess = ""
+            while d== 0:
+                player_guess = input("Enter (A, B, C): ")
+                player_guess = player_guess.upper()
                 print()
-                print("Incorrect Value!!")
-                print()       
-            
+                if player_guess == "A":
+                    d += 1
+                elif player_guess == "B":
+                    d += 1
+                elif player_guess == "C":
+                    d += 1
+                else:
+                    print("*******************************")
+                    print()
+                    print("Incorrect Value!!")
+                    print()       
             print()
-
             player_score += answer_check(question[4], player_guess)
             print(f"Your Current Score Is {player_score}")
             print()
@@ -111,7 +113,7 @@ def final_score(player_score):
     print()
     print("Your Final Result")
     print()
-    percentage = int((player_score/len(correct))*100)
+    percentage = int((player_score/len(correct))*250)
     print(f"You Answered: {player_score} Riddles Corretly with "+str(percentage)+"% Accuracy")
     print()
     if player_score == 50:
@@ -169,7 +171,7 @@ def play_again():
             print()
 
 def new_game():
-
+    latest_scores()
     player_details()
     welcome()
     play()    
