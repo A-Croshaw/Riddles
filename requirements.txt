@@ -25,3 +25,6 @@ rsa==4.9
 tzdata==2023.3
 uritemplate==4.1.1
 Werkzeug==2.2.3
+rich==13.3.4
+markdown-it-py==2.2.0
+mdurl==0.1.2
