@@ -1,7 +1,6 @@
 import random
 import gspread
 from google.oauth2.service_account import Credentials
-from rich import box
 from rich.table import Table
 from rich.console import Console
 
