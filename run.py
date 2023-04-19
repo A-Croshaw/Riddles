@@ -120,7 +120,8 @@ def play():
             count = 0
             player_guess = ""
             while count == 0:
-                player_guess = input("Enter (A, B, C): ")
+                console.print("Enter (A, B, C): \n", style=info_style, justify="center")
+                player_guess = input()
                 player_guess = player_guess.upper()
                 if player_guess == "A":
                     count += 1
