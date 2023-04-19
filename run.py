@@ -1,5 +1,7 @@
-import gspread
 import random
+import gspread
+from rich.table import Table
+from rich.console import Console
 from google.oauth2.service_account import Credentials
 
 SCOPE = [
@@ -13,18 +15,48 @@ SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('Riddles')
 riddles = SHEET.worksheet("riddles")
-
+score_list = SHEET.worksheet("score")
 correct = riddles.col_values(5)
+console = Console()
 player = ""
 percentage = 0
 player_score = 0
 question = []
 nums = []
+list_score = []
+
+
+def diplay_score():
+
+    global list_score
+    numx = 1
+    score_lists = SHEET.worksheet("score").get_all_values()
+    print("*******************************")
+    print()
+    print("To See Saved Scores")
+    print("Type 'Yes'")
+    print("Or Press Any Key To Continue")
+    print()
+    scores = input()
+    scores = scores.upper()
+    if scores == "YES":
+        list_score = score_list.row_values(numx)
+        numx += 1
+        table = Table(show_header=True, header_style="bold red on black", style="red on black", box=None)
+        table.add_column(list_score[0], justify="center", width=16,style="red on black")
+        table.add_column(list_score[1], justify="center", width=16,style="red on black")
+        table.add_column(list_score[2], justify="center", width=16,style="red on black")
+        while numx <= len(score_lists):
+            list_score = score_list.row_values(numx)
+            table.add_row(list_score[0], list_score[1], list_score[2],)
+            numx += 1
+        console.print(table)
+
 
 def player_details():
 
     global player
-    print(f"Welcome to Riddles.")
+    print("Welcome to Riddles.")
     print()
     print("*******************************")
     print()
@@ -32,6 +64,7 @@ def player_details():
     player_name = input()
     print()
     player = player_name
+
 
 def welcome():
 
@@ -49,6 +82,7 @@ def welcome():
     print("Good Luck")
     print()
 
+
 def play():
 
     riddle_number = 1
@@ -59,7 +93,6 @@ def play():
         if num not in nums:
             nums.append(num)
             question = riddles.row_values(num)
-            print(nums)
             print("*******************************")
             print()
             print(f"Riddle Number {riddle_number}")
@@ -68,18 +101,18 @@ def play():
             print()
             print(f"A: {question[1]} B: {question[2]} C: {question[3]}")
             print() 
-            d = 0
+            count = 0
             player_guess = ""
-            while d== 0:
+            while count == 0:
                 player_guess = input("Enter (A, B, C): ")
                 player_guess = player_guess.upper()
                 print()
                 if player_guess == "A":
-                    d += 1
+                    count += 1
                 elif player_guess == "B":
-                    d += 1
+                    count += 1
                 elif player_guess == "C":
-                    d += 1
+                    count += 1
                 else:
                     print("*******************************")
                     print()
@@ -92,7 +125,9 @@ def play():
             riddle_number += 1
         
     final_score(player_score)
-    upload_score()    
+    upload_score()
+    diplay_score()
+
 
 def answer_check(correct_answer, player_guess):
 
@@ -106,6 +141,7 @@ def answer_check(correct_answer, player_guess):
         print()
         return 0
 
+
 def final_score(player_score):
 
     global percentage
@@ -118,67 +154,61 @@ def final_score(player_score):
     print()
     if player_score == 50:
         print(f"CONGRATULATIONS {player} YOU ARE A RIDDLE MASTER")
-    
+
+
 def upload_score():
 
     data = [player, player_score, percentage]
     print("*******************************")
     print()
     print("To Save Your Score")
-    print("Type 'Yes' or 'No'")
+    print("Type 'Yes'")
+    print("Or Press Any Key To Continue")
     print()
-    l = 0
-    while l == 0:
-        upload = input()
-        upload = upload.upper()
-        if upload == "YES":
-            print("Uploading Score\n")
-            score_worksheet = SHEET.worksheet("score")
-            score_worksheet.append_row(data)
-            print("Successfully added.\n")
-            l += 1
-        elif upload == "NO":
-            l += 1
-        else:
-            print("*******************************")
-            print()
-            print("Incorrect Value!!")
-            print("Type 'Yes' or 'NO'")
-            print()
+    upload = input()
+    upload = upload.upper()
+    if upload == "YES":
+        print("Uploading Score\n")
+        score_worksheet = SHEET.worksheet("score")
+        score_worksheet.append_row(data)
+        print("Successfully added.\n")
+
 
 def play_again():
 
+    global percentage
+    global player_score
+    global question
+    global nums
+    global list_score
     print("*******************************")
     print()
-    print("Would you like to play again?")
-    print("Type 'Yes' or 'NO'")
+    print("To Play Again")
+    print("Type 'Yes'")
+    print("Or Press Any Key To Continue")
     print()
-    x = 0
-    while x == 0:
-        restart = input()
-        restart = restart.upper()
-        if restart == "YES":
-            x += 1
-            return True
-        elif restart == "NO":
-            x += 1
-            return False
-        else:
-            print("*******************************")
-            print()
-            print("Incorrect Value!!")
-            print("Type 'Yes' or 'NO'")
-            print()
+    restart = input()
+    restart = restart.upper()
+    if restart == "YES":
+        percentage = 0
+        player_score = 0
+        question = []
+        nums = []
+        list_score = []
+        return True
+
 
 def new_game():
-    latest_scores()
+
     player_details()
     welcome()
+    diplay_score()
     play()    
     while play_again():
         play()
     print("*******************************")    
     print()
     print("Thank you for playing")
+
 
 new_game()
