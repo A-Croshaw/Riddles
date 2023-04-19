@@ -43,7 +43,7 @@ list_score = []
 
 def player_details():
     """ 
-    Welcomes the user and asks for there name and saves to the player_name variable
+    Welcomes the user and asks for there name and saves the name to the player_name variable
     """
     global player
     console.print(" \n Welcome to Riddles.\n ", style=info_style, justify="center")
@@ -57,7 +57,6 @@ def welcome():
     """
     Displays information to the user about the game.
     """
-
     console.print(" \n ------------------------------------------------------------------------- \n ", style=lines_style, justify="center")
     console.print(f"Hello {player}!!  \n ", style=info_style, justify="center")
     console.print("How to Play  \n ", style=info_style, justify="center")
@@ -69,6 +68,11 @@ def welcome():
     console.print("Good Luck \n ", style=info_style, justify="center")
 
 def diplay_score():
+    """
+    Prompts the user to see score that have been saved.
+    Imports the data from google sheets
+    Displays the content within a table styled by RICH
+    """
 
     global list_score
     numx = 1
@@ -95,7 +99,16 @@ def diplay_score():
 
 
 def play():
-
+    """
+    Displays the riddles imported from google sheets:
+    Randomly selects 20 riddles from the imported riddles.
+    Promts the user to make a choice from a selction of answers.
+    Checks the users imputted choice againts the correct answers stored in 
+        google sheets and displays the correct output before looping back to next riddle
+    After all 20 riddles answered will check user score with the final_score function.
+    Then calls upload_score fuction 
+    Finally calls display_score functionlast
+    """
     riddle_number = 1
     global question
     global player_score
@@ -133,6 +146,10 @@ def play():
 
 
 def answer_check(correct_answer, player_guess):
+    """
+    Checks the users answers imputted with the correct answers imported fromgoogle sheets.
+    Displays correct output depending on the answer given.
+    """
 
     global question
     if correct_answer == player_guess:
@@ -144,7 +161,10 @@ def answer_check(correct_answer, player_guess):
 
 
 def final_score(player_score):
-
+    """
+    Displays users final score and produces a percentage
+    If user scores max points displays congratulations message aswell
+    """
     global percentage
     console.print("------------------------------------------------------------------------- \n ", style=lines_style, justify="center")
     console.print("Your Final Result  \n ", style=info_style, justify="center")
@@ -155,7 +175,11 @@ def final_score(player_score):
 
 
 def upload_score():
-
+    """
+    Promts user with question to save score.
+    if yes then will up date the score worksheet with a new row.
+    with messages displyed when staterd and successful.
+    """
     data = [player, player_score, percentage]
     console.print(" \n ------------------------------------------------------------------------- \n ", style=lines_style, justify="center")
     console.print("To Save Your Score  \n ", style=info_style, justify="center")
@@ -171,7 +195,12 @@ def upload_score():
 
 
 def play_again():
-
+    """
+    Promts the user asking to play again.
+    if yes returns true value.
+    if no returns a false value.
+    if new game started it restests global variables back to empty state.
+    """
     global percentage
     global player_score
     global question
@@ -193,7 +222,10 @@ def play_again():
 
 
 def new_game():
-
+    """
+    Main function called 
+    hass thank you message for end of game
+    """
     player_details()
     welcome()
     diplay_score()
