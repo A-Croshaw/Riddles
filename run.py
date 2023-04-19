@@ -55,6 +55,10 @@ def player_details():
     console.print(
         "Please Type Your Name \n ",
         style=info_style, justify="center")
+    console.print(
+        "Or Press Any Key To Continue \n",
+        style=info_style, justify="center"
+    )
     player_name = input()
     player = player_name
 
@@ -90,6 +94,12 @@ def welcome():
         "* Each riddle will give you 1 point \n ",
         style=info_style, justify="center"
     )
+    console.print(
+        "* Will not be able to save score if no player name given "
+        "\n game will need to be re-started to enter \n ",
+        style=info_style, justify="center"
+    )
+
     console.print(
         "---------------------------------"
         "---------------------------------------- \n ",
@@ -182,6 +192,7 @@ def play():
     """
     riddle_number = 1
     global question
+    global player
     global player_score
     while riddle_number <= 20:
         num = random.randint(1, 50)
@@ -247,7 +258,8 @@ def play():
             riddle_number += 1
 
     final_score(player_score)
-    upload_score()
+    if player != "":
+        upload_score()
     diplay_score()
 
 
