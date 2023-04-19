@@ -1,13 +1,9 @@
 import random
-
-"""Rich imports"""
+import gspread
+from google.oauth2.service_account import Credentials
 from rich import box
 from rich.table import Table
 from rich.console import Console
-
-"""Imports for google sheets and gspread"""
-import gspread
-from google.oauth2.service_account import Credentials
 
 """Google sheet variables and url links"""
 SCOPE = [
@@ -147,7 +143,7 @@ def play():
 
 def answer_check(correct_answer, player_guess):
     """
-    Checks the users answers imputted with the correct answers imported fromgoogle sheets.
+    Checks the users answers imputted with the correct answers imported from google sheets.
     Displays correct output depending on the answer given.
     """
 
@@ -224,7 +220,7 @@ def play_again():
 def new_game():
     """
     Main function called 
-    hass thank you message for end of game
+    has thank message to show the end of the game 
     """
     player_details()
     welcome()
