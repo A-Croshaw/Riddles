@@ -341,7 +341,7 @@ def upload_score():
         console.print(
             " \n -------------------------------"
             "------------------------------------------ \n ",
-            style=lines_style, 
+            style=lines_style,
             justify="center",
         )
         console.print("Uploading Score \n", style=info_style, justify="center")
