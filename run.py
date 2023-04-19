@@ -175,7 +175,7 @@ def diplay_score():
             numx += 1
         console.print(table)
         console.print(
-            "Or Press Any Key To Continue \n ",
+            " \n Press Any Key To Continue \n ",
             style=info_style, justify="center"
         )
         input()
@@ -338,11 +338,17 @@ def upload_score():
     upload = input()
     upload = upload.upper()
     if upload == "YES":
+        console.print(
+            " \n -------------------------------"
+            "------------------------------------------ \n ",
+            style=lines_style, 
+            justify="center",
+        )
         console.print("Uploading Score \n", style=info_style, justify="center")
         score_worksheet = SHEET.worksheet("score")
         score_worksheet.append_row(data)
         console.print(
-            "Successfully added. \n",
+            "Successfully added.",
             style=info_style, justify="center")
 
 
