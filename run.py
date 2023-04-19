@@ -5,7 +5,6 @@ from rich.table import Table
 from rich import box
 from rich.console import Console
 
-"""Google sheet variables and url links"""
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
     "https://www.googleapis.com/auth/drive.file",
@@ -61,6 +60,7 @@ def player_details():
     )
     player_name = input()
     player = player_name
+    welcome()
 
 
 def welcome():
@@ -174,7 +174,11 @@ def diplay_score():
             )
             numx += 1
         console.print(table)
-    welcome()
+        console.print(
+            "Or Press Any Key To Continue \n ",
+            style=info_style, justify="center"
+        )
+        input()
 
 
 def play():
@@ -192,7 +196,6 @@ def play():
     """
     riddle_number = 1
     global question
-    global player
     global player_score
     while riddle_number <= 20:
         num = random.randint(1, 50)
@@ -269,8 +272,6 @@ def answer_check(correct_answer, player_guess):
     the correct answers imported from google sheets.
     Displays correct output depending on the answer given.
     """
-
-    global question
     if correct_answer == player_guess:
         console.print(
             " \n You Answered Correct!  \n ",
@@ -285,7 +286,7 @@ def answer_check(correct_answer, player_guess):
         return 0
 
 
-def final_score(player_score):
+def final_score(players_score):
     """
     Displays users final score and produces a percentage
     If user scores max points displays congratulations message aswell
@@ -298,7 +299,7 @@ def final_score(player_score):
         justify="center",
     )
     console.print("Your Final Result  \n ", style=info_style, justify="center")
-    percentage = int((player_score / len(correct)) * 250)
+    percentage = int((players_score / len(correct)) * 250)
     console.print(
         f"You Answered: {player_score} Riddles Corretly with "
         + str(percentage)
@@ -359,7 +360,7 @@ def play_again():
     global nums
     global list_score
     console.print(
-        "-----------------------------------"
+        " \n-----------------------------------"
         "-------------------------------------- \n ",
         style=lines_style,
         justify="center",
@@ -372,6 +373,7 @@ def play_again():
     restart = input()
     restart = restart.upper()
     if restart == "YES":
+        welcome()
         percentage = 0
         player_score = 0
         question = []
@@ -386,7 +388,6 @@ def new_game():
     has thank message to show the end of the game
     """
     player_details()
-    welcome()
     diplay_score()
     play()
     while play_again():
