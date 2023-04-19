@@ -9,12 +9,12 @@ from rich.console import Console
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
     "https://www.googleapis.com/auth/drive.file",
-    "https://www.googleapis.com/auth/drive"
-    ]
-CREDS = Credentials.from_service_account_file('creds.json')
+    "https://www.googleapis.com/auth/drive",
+]
+CREDS = Credentials.from_service_account_file("creds.json")
 SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
-SHEET = GSPREAD_CLIENT.open('Riddles')
+SHEET = GSPREAD_CLIENT.open("Riddles")
 riddles = SHEET.worksheet("riddles")
 score_list = SHEET.worksheet("score")
 correct = riddles.col_values(5)
@@ -38,13 +38,23 @@ list_score = []
 
 
 def player_details():
-    """ 
-    Welcomes the user and asks for there name and saves the name to the player_name variable
+    """
+    Welcomes the user and asks for there name
+    saves the name to the player_name variable
     """
     global player
-    console.print(" \n Welcome to Riddles.\n ", style=info_style, justify="center")
-    console.print("------------------------------------------------------------------------- \n ", style=lines_style, justify="center")
-    console.print("Please Type Your Name \n ", style=info_style, justify="center")
+    console.print(
+        "\n Welcome to Riddles.\n ",
+        style=info_style, justify="center")
+    console.print(
+        "-------------------------------------"
+        "------------------------------------ \n ",
+        style=lines_style,
+        justify="center",
+    )
+    console.print(
+        "Please Type Your Name \n ",
+        style=info_style, justify="center")
     player_name = input()
     player = player_name
 
@@ -53,15 +63,43 @@ def welcome():
     """
     Displays information to the user about the game.
     """
-    console.print(" \n ------------------------------------------------------------------------- \n ", style=lines_style, justify="center")
+    console.print(
+        " \n ----------------------------------"
+        "--------------------------------------- \n ",
+        style=lines_style,
+        justify="center",
+    )
     console.print(f"Hello {player}!!  \n ", style=info_style, justify="center")
     console.print("How to Play  \n ", style=info_style, justify="center")
-    console.print("------------------------------------------------------------------------- \n ", style=lines_style, justify="center")
-    console.print("* There are 20 riddles to be answered \n ", style=info_style, justify="center")
-    console.print("* Each riddle has 3 options A, B or C to choose from  \n ", style=info_style, justify="center")
-    console.print("* Each riddle will give you 1 point \n ", style=info_style, justify="center")
-    console.print("------------------------------------------------------------------------- \n ", style=lines_style, justify="center")
-    console.print("Good Luck \n ", style=info_style, justify="center")
+    console.print(
+        "---------------------------------------"
+        "---------------------------------- \n ",
+        style=lines_style,
+        justify="center",
+    )
+    console.print(
+        "* There are 20 riddles to be answered \n ",
+        style=info_style, justify="center"
+    )
+    console.print(
+        "* Each riddle has 3 options A, B or C to choose from  \n ",
+        style=info_style,
+        justify="center",
+    )
+    console.print(
+        "* Each riddle will give you 1 point \n ",
+        style=info_style, justify="center"
+    )
+    console.print(
+        "---------------------------------"
+        "---------------------------------------- \n ",
+        style=lines_style,
+        justify="center",
+    )
+    console.print(
+        "Good Luck \n ",
+        style=info_style, justify="center")
+
 
 def diplay_score():
     """
@@ -73,22 +111,57 @@ def diplay_score():
     global list_score
     numx = 1
     score_lists = SHEET.worksheet("score").get_all_values()
-    console.print(" \n ------------------------------------------------------------------------- \n ", style=lines_style, justify="center")
-    console.print("To See Saved Scores \n ", style=info_style, justify="center")
-    console.print("Type 'Yes' \n ", style=info_style, justify="center")
-    console.print("Or Press Any Key To Continue \n ", style=info_style, justify="center")
+    console.print(
+        " \n -------------------------------"
+        "------------------------------------------ \n ",
+        style=lines_style,
+        justify="center",
+    )
+    console.print(
+        "To See Saved Scores \n ",
+        style=info_style, justify="center")
+    console.print(
+        "Type 'Yes' \n ",
+        style=info_style, justify="center")
+    console.print(
+        "Or Press Any Key To Continue \n ", style=info_style, justify="center"
+    )
     scores = input()
     scores = scores.upper()
     if scores == "YES":
         list_score = score_list.row_values(numx)
         numx += 1
-        table = Table(title=" \n Scores \n", title_justify="center", title_style="yellow on grey0", show_header=True, header_style="blue3 on grey0", style="red on grey0", box=box.ASCII, expand=True)
-        table.add_column(list_score[0], justify="center", width=16, style="spring_green3 on grey0")
-        table.add_column(list_score[1], justify="center", width=16, style="spring_green3 on grey0")
-        table.add_column(list_score[2] + "%", justify="center", width=16, style="spring_green3 on grey0")
+        table = Table(
+            title=" \n Scores \n",
+            title_justify="center",
+            title_style="yellow on grey0",
+            show_header=True,
+            header_style="blue3 on grey0",
+            style="red on grey0",
+            box=box.ASCII,
+            expand=True,
+        )
+        table.add_column(
+            list_score[0], justify="center",
+            width=16, style="spring_green3 on grey0"
+        )
+        table.add_column(
+            list_score[1], justify="center",
+            width=16, style="spring_green3 on grey0"
+        )
+        table.add_column(
+            list_score[2] + "%",
+            justify="center",
+            width=16,
+            style="spring_green3 on grey0",
+        )
         while numx <= len(score_lists):
             list_score = score_list.row_values(numx)
-            table.add_row(list_score[0], list_score[1], list_score[2],)
+            table.add_row(
+                list_score[0],
+                list_score[1],
+                list_score[2],
+            )
             numx += 1
         console.print(table)
     welcome()
@@ -99,10 +172,12 @@ def play():
     Displays the riddles imported from google sheets:
     Randomly selects 20 riddles from the imported riddles.
     Promts the user to make a choice from a selction of answers.
-    Checks the users imputted choice againts the correct answers stored in 
-        google sheets and displays the correct output before looping back to next riddle
-    After all 20 riddles answered will check user score with the final_score function.
-    Then calls upload_score fuction 
+    Checks the users imputted choice againts the correct answers stored in
+    google sheets and displays the correct output
+    before looping back to next riddle
+    After all 20 riddles answered will check user score with the final_score
+    function.
+    Then calls upload_score fuction
     Finally calls display_score functionlast
     """
     riddle_number = 1
@@ -113,14 +188,32 @@ def play():
         if num not in nums:
             nums.append(num)
             question = riddles.row_values(num)
-            console.print(" \n ------------------------------------------------------------------------- \n ", style=lines_style, justify="center")
-            console.print(f"Riddle Number {riddle_number} \n ", style=info_style, justify="center")
-            console.print(f"{question[0]} \n" , style=riddle_style, justify="center")
-            console.print(f"A: {question[1]}      B: {question[2]}    C: {question[3]}  \n ", style=option_style, justify="center")
+            console.print(
+                " \n ---------------------------------"
+                "---------------------------------------- \n ",
+                style=lines_style,
+                justify="center",
+            )
+            console.print(
+                f"Riddle Number {riddle_number} \n ",
+                style=info_style, justify="center"
+            )
+            console.print(
+                f"{question[0]} \n",
+                style=riddle_style, justify="center")
+            console.print(
+                f"A: {question[1]}   "
+                f"   B: {question[2]}  "
+                f"  C: {question[3]}  \n ",
+                style=option_style,
+                justify="center",
+            )
             count = 0
             player_guess = ""
             while count == 0:
-                console.print("Enter (A, B, C): \n", style=info_style, justify="center")
+                console.print(
+                    "Enter (A, B, C): \n",
+                    style=info_style, justify="center")
                 player_guess = input()
                 player_guess = player_guess.upper()
                 if player_guess == "A":
@@ -130,13 +223,29 @@ def play():
                 elif player_guess == "C":
                     count += 1
                 else:
-                    console.print("------------------------------------------------------------------------- \n ", style=lines_style, justify="center")
-                    console.print("Incorrect Value!! :warning:  \n ", style=incorrect_style, justify="center")
-                    console.print("Type A, B, or C  \n ", style=incorrect_style, justify="center")  
+                    console.print(
+                        "-----------------------------------"
+                        "-------------------------------------- \n ",
+                        style=lines_style,
+                        justify="center",
+                    )
+                    console.print(
+                        "Incorrect Value!! :warning:  \n ",
+                        style=incorrect_style,
+                        justify="center",
+                    )
+                    console.print(
+                        "Type A, B, or C  \n ",
+                        style=incorrect_style, justify="center"
+                    )
             player_score += answer_check(question[4], player_guess)
-            console.print(f"Your Current Score Is {player_score}  \n ", style=info_style, justify="center")
+            console.print(
+                f"Your Current Score Is {player_score}  \n ",
+                style=info_style,
+                justify="center",
+            )
             riddle_number += 1
-        
+
     final_score(player_score)
     upload_score()
     diplay_score()
@@ -144,16 +253,23 @@ def play():
 
 def answer_check(correct_answer, player_guess):
     """
-    Checks the users answers imputted with the correct answers imported from google sheets.
+    Checks the users answers imputted with
+    the correct answers imported from google sheets.
     Displays correct output depending on the answer given.
     """
 
     global question
     if correct_answer == player_guess:
-        console.print(" \n You Answered Correct!  \n ", style=correct_style, justify="center")
+        console.print(
+            " \n You Answered Correct!  \n ",
+            style=correct_style, justify="center"
+        )
         return 1
     else:
-        console.print(" \n Sorry Wrong Answer!  \n ", style=incorrect_style, justify="center")
+        console.print(
+            " \n Sorry Wrong Answer!  \n ",
+            style=incorrect_style, justify="center"
+        )
         return 0
 
 
@@ -163,12 +279,27 @@ def final_score(player_score):
     If user scores max points displays congratulations message aswell
     """
     global percentage
-    console.print("------------------------------------------------------------------------- \n ", style=lines_style, justify="center")
+    console.print(
+        "-------------------------------"
+        "------------------------------------------ \n ",
+        style=lines_style,
+        justify="center",
+    )
     console.print("Your Final Result  \n ", style=info_style, justify="center")
-    percentage = int((player_score/len(correct))*250)
-    console.print(f"You Answered: {player_score} Riddles Corretly with "+str(percentage)+"% Accuracy  \n ", style=correct_style, justify="center")
+    percentage = int((player_score / len(correct)) * 250)
+    console.print(
+        f"You Answered: {player_score} Riddles Corretly with "
+        + str(percentage)
+        + "% Accuracy  \n ",
+        style=correct_style,
+        justify="center",
+    )
     if player_score == 50:
-        console.print(f"CONGRATULATIONS {player} YOU ARE A RIDDLE MASTER  \n ", style=correct_style, justify="center")
+        console.print(
+            f"CONGRATULATIONS {player} YOU ARE A RIDDLE MASTER  \n ",
+            style=correct_style,
+            justify="center",
+        )
 
 
 def upload_score():
@@ -178,17 +309,28 @@ def upload_score():
     with messages displyed when staterd and successful.
     """
     data = [player, player_score, percentage]
-    console.print(" \n ------------------------------------------------------------------------- \n ", style=lines_style, justify="center")
-    console.print("To Save Your Score  \n ", style=info_style, justify="center")
+    console.print(
+        " \n -------------------------------"
+        "------------------------------------------ \n ",
+        style=lines_style,
+        justify="center",
+    )
+    console.print(
+        "To Save Your Score  \n ",
+        style=info_style, justify="center")
     console.print("Type 'Yes'  \n ", style=info_style, justify="center")
-    console.print("Or Press Any Key To Continue  \n ", style=info_style, justify="center")
+    console.print(
+        "Or Press Any Key To Continue  \n ", style=info_style, justify="center"
+    )
     upload = input()
     upload = upload.upper()
     if upload == "YES":
         console.print("Uploading Score \n", style=info_style, justify="center")
         score_worksheet = SHEET.worksheet("score")
         score_worksheet.append_row(data)
-        console.print("Successfully added. \n", style=info_style, justify="center")
+        console.print(
+            "Successfully added. \n",
+            style=info_style, justify="center")
 
 
 def play_again():
@@ -196,17 +338,25 @@ def play_again():
     Promts the user asking to play again.
     if yes returns true value.
     if no returns a false value.
-    if new game started it restests global variables back to empty state.
+    if new game started it restests
+    global variables back to empty state.
     """
     global percentage
     global player_score
     global question
     global nums
     global list_score
-    console.print("------------------------------------------------------------------------- \n ", style=lines_style, justify="center")
+    console.print(
+        "-----------------------------------"
+        "-------------------------------------- \n ",
+        style=lines_style,
+        justify="center",
+    )
     console.print("To Play Again  \n ", style=info_style, justify="center")
     console.print("Type 'Yes'  \n ", style=info_style, justify="center")
-    console.print("Or Press Any Key To Continue \n ", style=info_style, justify="center")
+    console.print(
+        "Or Press Any Key To Continue \n ", style=info_style, justify="center"
+    )
     restart = input()
     restart = restart.upper()
     if restart == "YES":
@@ -220,17 +370,23 @@ def play_again():
 
 def new_game():
     """
-    Main function called 
-    has thank message to show the end of the game 
+    Main function called
+    has thank message to show the end of the game
     """
     player_details()
     welcome()
     diplay_score()
-    play()    
+    play()
     while play_again():
         play()
-    console.print(" \n ------------------------------------------------------------------------- \n ", style=lines_style, justify="center")    
-    console.print("Thank you for playing \n  ", style=info_style, justify="center")
+    console.print(
+        " \n -------------------------------"
+        "------------------------------------------ \n ",
+        style=lines_style,
+        justify="center",
+    )
+    console.print(
+        "Thank you for playing \n  ", style=info_style, justify="center")
 
 
 new_game()
