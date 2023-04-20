@@ -174,11 +174,11 @@ def diplay_score():
             )
             numx += 1
         console.print(table)
-        console.print(
-            " \n Press Any Key To Continue \n ",
-            style=info_style, justify="center"
-        )
-        input()
+    console.print(
+        " \n Press Any Key To Continue \n ",
+        style=info_style, justify="center"
+    )
+    input()
 
 
 def play():
