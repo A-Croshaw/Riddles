@@ -39,7 +39,6 @@ It has instructions that are seen by the user upon loading making it easy to und
 - [_Design_](#design)
 - [_Bugs_](#bugs)
 - [_Testing_](#testing)
-  - [\_1 - \_](#_1---_)
 - [_Validation_](#validation)
 - [_Technologies_](#technologies)
 - [_Deployment_](#deployment)
@@ -183,8 +182,6 @@ It has instructions that are seen by the user upon loading making it easy to und
  * Then the user will be prompted with [To Save Your Score](#10---saving-scores)* or [See Saved Scores](#4---saved-score-viewing).
 
     *(only displays when player provides a name, is shown before 'See Saved Scores'  if name is provided).
-    
-![Final Score](documents/readme-images/final-score.png)
 
 ### _10 - Saving Scores_
  
@@ -237,8 +234,7 @@ It has instructions that are seen by the user upon loading making it easy to und
  * Has a function to resart the game.
 
  * Easily able to implent more riddles buy inputting them to the google sheet worksheet
-
-
+  
 ## _Features to be Implemented_
 
  * Change the score table from showing all saved scores to the top 10 higest scores.
@@ -260,9 +256,41 @@ It has instructions that are seen by the user upon loading making it easy to und
 
 # _Testing_
 
-## _1 - _
-
- * 
+| Test     | Expected      |   Outcome  | 
+| :----     |    :----   |  :---- | 
+|Run run.py| run.py loads, Welcome banner appears, player name prompt, appears| As Expected |
+|Enter Player Name and press enter | How To Play Information appear| As Expected|
+|Press enter on how to play|Loads To See Saved Scores Prompt| As Expected|
+|Type yes on To See Saved Scores Prompt and Press enter|Loads Saved Scores Table|As Expected|
+|Press enter on Saved Score Table to Continue|Loads Good Luck Banner And first Riddle|As Expected|
+|Enter C For Correct Answer|Loads Correct Answer Output and Score Output with score of 1, Loads Second Riddle|As Expected|
+|Enter B for Wrong Answer |Loads Wrong Answer Output and Score Output with score of 1, Loads Third Riddle|As Expected|
+|Enter C For Correct Answer|Loads Correct Answer Output and Score Output with score of 2, Loads fourth Riddle|As Expected|
+|Enter A for Wrong Answer |Loads Wrong Answer Output and Score Output with score of 2, Loads fith Riddle|As Expected|
+|Enter B For Correct Answer|Loads Correct Answer Output and Score Output with score of 3, Loads sixth Riddle|As Expected|
+|Enter C for Wrong Answer |LoadsWrong Answer Output and Score Output with score of 3, Loads Seventh Riddle|As Expected|
+|Enter C For Correct Answer|Loads Correct Answer Output and Score Output with score of 4, Loads 8th Riddle|As Expected|
+|Enter D For Incorrect Value|Loads Incorrect Value Output, And Enter (A, B, C)  Prompt|As Expected|
+|Press Enter With No Input|Loads Incorrect Value Output, And Enter (A, B, C)  Prompt|As Expected|
+|Randon Select Rest of Riddle Answers  untill final Riddle|Diplay Outputs According to Correct, or Wrong Answers|As Expected|
+|Enter Last Riddle Choice|Displays Correct Output Depening on selection, Loads Finall Score Output, Loads Save Score Prompt|As Expected|
+|Type yes to Save Score|Shows Uploading output, Shows Successful output, Loads See Saved Scores Prompt|As Expected|
+|Type yes on To See Saved Scores Prompt and Press enter|Loads Saved Scores Table|As Expected|
+|Press enter on Saved Score Table to Continue|Loads Play Again Prompt|As Expected|
+|Type Yes On Play Again Prompt|Loads Up How To Play Output|As Expected|
+|Press enter on how to play|Loads To See Saved Scores Prompt|As Expected|
+|Press Enter To Skip Score Table |Loads Good Luck Banner And first Riddle|As Expected|
+|Randomly Selectect Answers To all 20 Riddles|Diplay Outputs According to Correct, or Wrong Answers, Loads Save Score Prompt|As Expected|
+|Press Enter To SkipSave Score|Loads See Saved Score Prompt|As Expected|
+|Press Enter To See Saved Score Score|Loads Play Again Prompt|As Expected|
+|Press Enter To Skip Play Again Prompt|Loads Thank you for playing Output, Game ends|As Expected|
+|Load run.py Skip player Name,|Load welcome banner and Player prompt, loads how to play output|As Expected|
+|Press enter to continue, and press enter again to not load score table|Loads see saved score prompt, loads goodluck banner and first riddle|As Expected|
+|Randomly Selectect Answers To 19 Riddles|Diplay Outputs According to Correct, or Wrong Answers, Loads Save Score Prompt|As Expected|
+|Enter Last riddle|Correct ouptput shows depending in Answwer given, Final Score output shows, See Saved Scores prompt|As Expected|
+|Press Enter To Skip Save Score|Loads See Saved Score Prompt|As Expected|
+|Press Enter To Skip See Saved Score Score|Loads Play Again Prompt|As Expected|
+|Press Enter To Skip Play Again Prompt|Loads Thank you for playing Output, Game ends|As Expected|
 
 # _Validation_
 
