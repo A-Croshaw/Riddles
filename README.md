@@ -45,7 +45,6 @@ It has instructions that are seen by the user upon loading making it easy to und
     2. [Page Deployment](#2---page-deployment)
     3. [Cloning Repository](#3---cloning-repository)
 8. [Credits](#credits)
-    1. [Code](#2---code)
 
 # _Features_
 
@@ -97,9 +96,9 @@ It has instructions that are seen by the user upon loading making it easy to und
 
  * Typing yes will Show the stored scores and display this table below.
 
- * Pressing enter then the player is taken to the [Riddles](#5---displayed-riddles).
+ * Pressing enter then the player is taken to the [Riddles](#5---displayed-riddles)
 
- * If the player is at the end of the game then pressing enter will take then to [Play Again](#12---play-again) to allow the player to either exit or restart.
+ * If the player is at the end of the game then pressing enter will take then to [Play Again](#11---play-again) to allow the player to either exit or restart.
 
 ![Saved Score Viewing](documents/readme-images/open-saved-scores.png)
 
@@ -113,11 +112,11 @@ It has instructions that are seen by the user upon loading making it easy to und
 
  * If the player is at the begining of the game this will take the player to the [Riddles](#5---displayed-riddles) to begin playing.
 
- * If the player is at the end of the game then this will take the player to [Play Again](#12---play-again) to allow the player to either exit or restart.
+ * If the player is at the end of the game then this will take the player to [Play Again](#11---play-again) to allow the player to either exit or restart.
 
 ![Score Table](documents/readme-images/score-table.png)
 
-### _6 - Displayed Riddles_
+### _5 - Displayed Riddles_
 
  * The player will be Shown a message saying 'Good Luck' before the first riddle only.
 
@@ -203,8 +202,6 @@ It has instructions that are seen by the user upon loading making it easy to und
 
  * If the player presses enter then this process will be skipped and the user will be prompted with the [See Save Scores](#4---saved-score-viewing). (See Above For Details).
 
-  [See Save Scores](#4---saved-score-viewing)
-
 ### _11 - Play Again_
 
  * The player will be prompt with 'Play Again' message and asked to type 'Yes', 'Or Press Enter To Conintue'.
@@ -277,15 +274,15 @@ It has instructions that are seen by the user upon loading making it easy to und
 
  * [LucidChart](https://www.lucidchart.com/pages/) used to create the flow chart showing the game's functionality and flow.
 
- * [GitHub](github.com) was used to hold the game repository files.
+ * [GitHub](https://www.github.com) was used to hold the game repository files.
 
- * [Gitpod](gitpod.io) was used for the coding environment.
+ * [Gitpod](https://www.gitpod.io) was used for the coding environment.
 
- * [Heroku](heroku.com) was used to deploy the game to the web.
+ * [Heroku](https://www.heroku.com) was used to deploy the game to the web.
  
  * [NHC Debut Video](https://www.nchsoftware.com/capture/download-now.html?ns=true&kw=nch%20debut%20video&gclid=Cj0KCQjwxYOiBhC9ARIsANiEIfaBgkFY226We0Niciqf_go8kAI_hYrSRyhBh2FvxDuEqUfzJi1j0YoaAtjGEALw_wcB) Capture used to screen recored the game play for gif.
 
- * To create the gif [ezgif.com](ezgif.com) was used
+ * To create the gif [ezgif.com](https://www.ezgif.com) was used
 
 # _Deployment_
 
@@ -330,10 +327,16 @@ It has instructions that are seen by the user upon loading making it easy to und
 
 ## _3 - Cloning Repository_
 
- * To clone the repository for download or use within your GitHub head-over to this link https://github.com/git-guides/git-clone
+ * To clone the repository for download or use within your GitHub head-over to this [link](https://github.com/git-guides/git-clone) 
 
 # _Credits_
 
-# _1 - Code_
+ * I used Rich from this link here for References [rich.readthedocs](https://rich.readthedocs.io/en/latest/index.html)
 
- * 
+ * The use of the Code Institute love_sandwiches walk through project for the linking of the google sheets
+
+ * I used [python.org](https://www.python.org/) for References for the Pyhton code and functionality
+
+ * I used [w3schools](https://www.w3schools.com/python/default.asp) for References for the Pyhton code and functionality
+
+ * I used [stackoverflow](https://stackoverflow.com/) for References for the Pyhton code and functionality
