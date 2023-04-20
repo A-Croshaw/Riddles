@@ -330,7 +330,7 @@ def final_score(players_score):
         style=correct_style,
         justify="center",
     )
-    if player_score == 50:
+    if player_score == 20:
         console.print(
             f"CONGRATULATIONS {player} YOU ARE A RIDDLE MASTER  \n ",
             style=correct_style,
