@@ -107,8 +107,10 @@ def welcome():
         justify="center",
     )
     console.print(
-        "Good Luck \n ",
-        style=info_style, justify="center")
+        "Press Any Key To Continue \n ",
+        style=info_style, justify="center"
+    )
+    input()
 
 
 def diplay_score():
@@ -139,10 +141,16 @@ def diplay_score():
     scores = input()
     scores = scores.upper()
     if scores == "YES":
+        console.print(
+            " \n -------------------------------"
+            "------------------------------------------ \n ",
+            style=lines_style,
+            justify="center",
+        )
         list_score = score_list.row_values(numx)
         numx += 1
         table = Table(
-            title=" \n Scores \n",
+            title="Scores \n",
             title_justify="center",
             title_style="yellow on grey0",
             show_header=True,
@@ -174,11 +182,11 @@ def diplay_score():
             )
             numx += 1
         console.print(table)
-    console.print(
-        " \n Press Any Key To Continue \n ",
-        style=info_style, justify="center"
-    )
-    input()
+        console.print(
+            " \n Press Any Key To Continue \n ",
+            style=info_style, justify="center"
+        )
+        input()
 
 
 def play():
@@ -197,6 +205,15 @@ def play():
     riddle_number = 1
     global question
     global player_score
+    console.print(
+        " \n -------------------------------"
+        "------------------------------------------ \n ",
+        style=lines_style,
+        justify="center",
+    )
+    console.print(
+        "Good Luck",
+        style=info_style, justify="center")
     while riddle_number <= 20:
         num = random.randint(1, 50)
         if num not in nums:
@@ -238,7 +255,7 @@ def play():
                     count += 1
                 else:
                     console.print(
-                        "-----------------------------------"
+                        "\n -----------------------------------"
                         "-------------------------------------- \n ",
                         style=lines_style,
                         justify="center",
@@ -254,7 +271,7 @@ def play():
                     )
             player_score += answer_check(question[4], player_guess)
             console.print(
-                f"Your Current Score Is {player_score}  \n ",
+                f"Your Current Score Is {player_score}  ",
                 style=info_style,
                 justify="center",
             )
@@ -272,15 +289,21 @@ def answer_check(correct_answer, player_guess):
     the correct answers imported from google sheets.
     Displays correct output depending on the answer given.
     """
+    console.print(
+        " \n-------------------------------"
+        "------------------------------------------ \n ",
+        style=lines_style,
+        justify="center",
+    )
     if correct_answer == player_guess:
         console.print(
-            " \n You Answered Correct!  \n ",
+            "You Answered Correct!  \n ",
             style=correct_style, justify="center"
         )
         return 1
     else:
         console.print(
-            " \n Sorry Wrong Answer!  \n ",
+            "Sorry Wrong Answer!  \n ",
             style=incorrect_style, justify="center"
         )
         return 0
