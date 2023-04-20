@@ -55,7 +55,7 @@ def player_details():
         "Please Type Your Name \n ",
         style=info_style, justify="center")
     console.print(
-        "Or Press Any Key To Continue \n",
+        "Or Press Enter To Continue \n",
         style=info_style, justify="center"
     )
     player_name = input()
@@ -107,7 +107,7 @@ def welcome():
         justify="center",
     )
     console.print(
-        "Press Any Key To Continue \n ",
+        "Press Enter To Continue \n ",
         style=info_style, justify="center"
     )
     input()
@@ -136,7 +136,7 @@ def diplay_score():
         "Type 'Yes' \n ",
         style=info_style, justify="center")
     console.print(
-        "Or Press Any Key To Continue \n ", style=info_style, justify="center"
+        "Or Press Enter To Continue \n ", style=info_style, justify="center"
     )
     scores = input()
     scores = scores.upper()
@@ -183,7 +183,7 @@ def diplay_score():
             numx += 1
         console.print(table)
         console.print(
-            " \n Press Any Key To Continue \n ",
+            " \n Press Enter To Continue \n ",
             style=info_style, justify="center"
         )
         input()
@@ -356,7 +356,7 @@ def upload_score():
         style=info_style, justify="center")
     console.print("Type 'Yes'  \n ", style=info_style, justify="center")
     console.print(
-        "Or Press Any Key To Continue  \n ", style=info_style, justify="center"
+        "Or Press Enter To Continue  \n ", style=info_style, justify="center"
     )
     upload = input()
     upload = upload.upper()
@@ -397,7 +397,7 @@ def play_again():
     console.print("To Play Again  \n ", style=info_style, justify="center")
     console.print("Type 'Yes'  \n ", style=info_style, justify="center")
     console.print(
-        "Or Press Any Key To Continue \n ", style=info_style, justify="center"
+        "Or Press Enter To Continue \n ", style=info_style, justify="center"
     )
     restart = input()
     restart = restart.upper()
