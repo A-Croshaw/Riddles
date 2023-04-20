@@ -16,35 +16,37 @@ It has instructions that are seen by the user upon loading making it easy to und
 
 # _Content Menu_
 
-1. [Features](#features)
-    1. [How To Play](#how-to-play)
-    2. [Game Elements](#game-elements)
-        1. [Welcome](#1---welcome)
-        2. [Player](#2---player)
-        3. [How To Play](#3---how-to-play)
-        4. [Saved Score Viewing](#4---saved-score-viewing)
-        5. [Displayed Riddles](#5---displayed-riddles)
-        6. [Correct Answer](#6---correct-answer)
-        7. [Incorrect Answer](#7---incorrect-answer)
-        8. [Invalid Enterys](#8---invalid-enterys)
-        9. [Final Score](#9---final-score)
-        10. [Top Score](#10---top-score)
-        11. [Saving Scores](#11---saving-scores)
-        12. [Play Again](#12---play-again)
-        13. [Game End](#13---game-end)
-    3. [Data-Storage](#data-storage)
-    4. [Implemented Features](#implemented-features)
-    5. [Features to be Implemented](#features-to-be-implemented)
-2. [Design](#design)
-3. [Bugs](#bugs)
-4. [Testing](#testing)
-5. [Validation](#validation)
-6. [Technologies](#technologies)
-7. [Depolyment](#deployment)
-    1. [Version Control](#1---page-deployment)
-    2. [Page Deployment](#2---page-deployment)
-    3. [Cloning Repository](#3---cloning-repository)
-8. [Credits](#credits)
+- [Riddles](#riddles)
+- [_Content Menu_](#content-menu)
+- [_Features_](#features)
+  - [_How To Play_](#how-to-play)
+  - [_Game Elements_](#game-elements)
+    - [\_1 - Welcome \_](#_1---welcome-_)
+    - [_2 - Player_](#2---player)
+    - [_3 - How To Play_](#3---how-to-play)
+    - [_4 - Saved Score Viewing_](#4---saved-score-viewing)
+    - [_5 - Displayed Riddles_](#5---displayed-riddles)
+    - [_6 - Correct Answer_](#6---correct-answer)
+    - [_7 - Incorrect Answer_](#7---incorrect-answer)
+    - [_8 - Invalid Enterys_](#8---invalid-enterys)
+    - [_9 - Final Score_](#9---final-score)
+    - [_10 - Saving Scores_](#10---saving-scores)
+    - [_11 - Play Again_](#11---play-again)
+    - [_12 - Game End_](#12---game-end)
+  - [_Data Storage_](#data-storage)
+  - [_Implemented Features_](#implemented-features)
+  - [_Features to be Implemented_](#features-to-be-implemented)
+- [_Design_](#design)
+- [_Bugs_](#bugs)
+- [_Testing_](#testing)
+  - [\_1 - \_](#_1---_)
+- [_Validation_](#validation)
+- [_Technologies_](#technologies)
+- [_Deployment_](#deployment)
+  - [_1 - Version Control_](#1---version-control)
+  - [_2 - Page Deployment_](#2---page-deployment)
+  - [_3 - Cloning Repository_](#3---cloning-repository)
+- [_Credits_](#credits)
 
 # _Features_
 
@@ -321,7 +323,7 @@ It has instructions that are seen by the user upon loading making it easy to und
  
  * Now Scroll down to depoly : 
     * Option 1 is selecting Automatic deploys (Will Update Automaticly when every git push to the repository).
-    * Option 2 is selecting Manual deploy (Needs to me redeployed after every change manually via Heroku deploy tab).
+    * Option 2 is selecting Manual deploy (Needs to be redeployed after every change manually via Heroku deploy tab).
 
  Visit the live deployment [HERE](https://ac-riddles.herokuapp.com/).
 
