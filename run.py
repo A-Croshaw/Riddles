@@ -316,7 +316,7 @@ def final_score(players_score):
     """
     global percentage
     console.print(
-        "-------------------------------"
+        "\n-------------------------------"
         "------------------------------------------ \n ",
         style=lines_style,
         justify="center",
