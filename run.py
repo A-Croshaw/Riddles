@@ -168,7 +168,7 @@ def diplay_score():
             width=16, style="spring_green3 on grey0"
         )
         table.add_column(
-            list_score[2] + "%",
+            list_score[2],
             justify="center",
             width=16,
             style="spring_green3 on grey0",
@@ -178,7 +178,7 @@ def diplay_score():
             table.add_row(
                 list_score[0],
                 list_score[1],
-                list_score[2],
+                list_score[2] + " %",
             )
             numx += 1
         console.print(table)
