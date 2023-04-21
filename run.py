@@ -324,7 +324,7 @@ def final_score(players_score):
     console.print("Your Final Result  \n ", style=info_style, justify="center")
     percentage = int((players_score / len(correct)) * 250)
     console.print(
-        f"You Answered: {player_score} Riddles Corretly with "
+        f"You Answered: {player_score} Riddles Corretly With "
         + str(percentage)
         + "% Accuracy  \n ",
         style=correct_style,
@@ -371,7 +371,7 @@ def upload_score():
         score_worksheet = SHEET.worksheet("score")
         score_worksheet.append_row(data)
         console.print(
-            "Successfully added.",
+            "Successfully Added.",
             style=info_style, justify="center")
 
 
@@ -428,7 +428,7 @@ def new_game():
         justify="center",
     )
     console.print(
-        "Thank you for playing \n  ", style=info_style, justify="center")
+        "Thank You For Playing \n  ", style=info_style, justify="center")
 
 
 new_game()
