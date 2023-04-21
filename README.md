@@ -28,7 +28,7 @@ It has instructions that are seen by the user upon loading making it easy to und
     - [_5 - Displayed Riddles_](#5---displayed-riddles)
     - [_6 - Correct Answer_](#6---correct-answer)
     - [_7 - Incorrect Answer_](#7---incorrect-answer)
-    - [_8 - Invalid Enterys_](#8---invalid-enterys)
+    - [_8 - Invalid Entries_](#8---invalid-entries)
     - [_9 - Final Score_](#9---final-score)
     - [_10 - Saving Scores_](#10---saving-scores)
     - [_11 - Play Again_](#11---play-again)
@@ -161,7 +161,7 @@ It has instructions that are seen by the user upon loading making it easy to und
 
 ![Incorrect Answer](documents/readme-images/wrong-answer.png)
 
-### _8 - Invalid Enterys_
+### _8 - Invalid Entries_
 
  * Whilst the player is answering the riddles and does not enter 'A' or 'a', 'B' or 'b', 'C' or 'c'
 
@@ -301,6 +301,17 @@ It has instructions that are seen by the user upon loading making it easy to und
 # _Technologies_
 
  * Python is the main programming language to produce the game.
+  
+ * rich was imported.
+      * Table - To create the table in Saved Scores. 
+      * Box - For the outline of the table in Saved Scores. 
+      * Console - For the colour styling for the output to the console.
+  
+ * random was imported to handle the random numbers to select the riddles at random.
+  
+ * gspread was imported to handle the access to the google sheets data.
+  
+ * google.oauth2.service_account import Credentials was used to handle the access to the google drive where the google sheet is stored.
 
  * [LucidChart](https://www.lucidchart.com/pages/) used to create the flow chart showing the game's functionality and flow.
 
