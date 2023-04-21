@@ -74,7 +74,7 @@ def welcome():
         justify="center",
     )
     console.print(f"Hello {player}!!  \n ", style=info_style, justify="center")
-    console.print("How to Play  \n ", style=info_style, justify="center")
+    console.print("How To Play  \n ", style=info_style, justify="center")
     console.print(
         "---------------------------------------"
         "---------------------------------- \n ",
